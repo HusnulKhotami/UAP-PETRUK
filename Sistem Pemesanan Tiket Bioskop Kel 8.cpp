@@ -189,3 +189,39 @@ void registrasi() {
     system("pause");
 }
 
+bool login() {
+    string username, password;
+    clearScreen();
+    printHeader();
+    cout << "Login Pengguna" << endl;
+    cout << "Masukkan username: ";
+    cin >> username;
+    cout << "Masukkan password: ";
+    cin >> password;
+
+    if ((username == "messi" && password == "123") ||
+        (pengguna.find(username) != pengguna.end() && pengguna[username] == password)) {
+        cout << "Login berhasil!" << endl;
+        system("pause");
+        return true;
+    } else {
+        cout << "Username atau password salah!" << endl;
+        system("pause");
+        return false;
+    }
+}
+
+int timeToMinutes(const string& time) {
+    int hours = stoi(time.substr(0, 2));
+    int minutes = stoi(time.substr(3, 2));
+    return hours * 60 + minutes;
+}
+
+void sortFilms(const string& bioskop) {
+    if (jadwalFilm.find(bioskop) != jadwalFilm.end()) {
+        sort(jadwalFilm[bioskop].begin(), jadwalFilm[bioskop].end(), [](const Film& a, const Film& b) {
+            return timeToMinutes(a.waktu) < timeToMinutes(b.waktu);
+        });
+    }
+}
+
