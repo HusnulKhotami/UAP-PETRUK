@@ -448,3 +448,28 @@ if (!tiketList.empty()) {
 system("pause");
 }
 
+void inisialisasiKursi() {
+srand(time(0));
+for (int i = 1; i <= 20; ++i) {
+kursiList.push_back(Kursi(i, rand() % 2 == 0));
+}
+}
+
+void tampilkanMenuUtama() {
+clearScreen();
+printHeader();
+printMenu();
+}
+
+void tampilkanMenuSetelahLogin() {
+clearScreen();
+printHeader();
+cout << "Menu Setelah Login" << endl;
+cout << "+----------------------------------------------+" << endl;
+cout << "| 1. Tambah Film                               |" << endl;
+cout << "| 2. Pesan Tiket                               |" << endl;
+cout << "| 3. Cek Tiket                                 |" << endl;
+cout << "| 4. Logout                                    |" << endl;
+cout << "+----------------------------------------------+" << endl;
+cout << "Pilih Opsi: ";
+}
