@@ -391,3 +391,44 @@ if (konfirmasi == 'y' || konfirmasi == 'Y') {
     system("pause");
 }
 }
+
+void cetakTiket(const Tiket& tiket) {
+clearScreen();
+printHeaderCek();
+cout << "Cetak Tiket" << endl;
+// Membuat kotak menyerupai tiket bioskop
+cout << "+-------------------------------------------------------------------------------------------------+" << endl;
+cout << "|                                Sistem Pemesanan Tiket Bioskop                                   |" << endl;
+cout << "+-------------------------------------------------------------------------------------------------+" << endl;
+cout << "| Nama Bioskop : Cinema XXI                                                                       |" << endl;
+cout << "| Judul Film  : " << tiket.judul << string(40 - tiket.judul.size(), ' ') <<"                                          |" << endl;
+cout << "| Waktu Tayang: " << tiket.waktu << string(40 - tiket.waktu.size(), ' ') <<"                                          |" << endl;
+cout << "| Harga       : Rp" << tiket.harga << string(37 - to_string(tiket.harga).size(), ' ') <<"                                           |" << endl;
+cout << "| Nomor Kursi : " << tiket.nomorKursi << string(40 - to_string(tiket.nomorKursi).size(), ' ') <<"                                          |" << endl;
+cout << "+-------------------------------------------------------------------------------------------------+" << endl;
+cout << "| Barcode      : ";
+
+// Menampilkan barcode menggunakan karakter ASCII
+string barcode = "|| |||  || |||| | || | ||| ||| |"; // Contoh pola barcode        
+cout << barcode << "                                                 |" << endl;
+cout << "+-------------------------------------------------------------------------------------------------+" << endl;
+
+system("pause");
+}
+
+void cekTiket() {
+clearScreen();
+printHeaderCek();
+cout << "Daftar Tiket" << endl;
+vector<string> headers = {"No", "Judul Film", "Waktu", "Harga", "Nomor Kursi"};
+vector<vector<string>> rows;
+for (size_t i = 0; i < tiketList.size(); ++i) {
+    rows.push_back({
+        to_string(i + 1),
+        tiketList[i].judul,
+        tiketList[i].waktu,
+        "Rp" + to_string(tiketList[i].harga),
+        to_string(tiketList[i].nomorKursi)
+    });
+}
+
