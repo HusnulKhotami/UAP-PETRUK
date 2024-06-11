@@ -251,5 +251,19 @@ void tambahFilm() {
     } else {
         cout << "Pilihan tidak valid!" << endl;
         system("pause");
-        return tambahFilm(); // Restart the function if the choice is invalid
+        return tambahFilm(); 
     }
+
+cout << "Masukkan judul film: ";
+    cin.ignore(); 
+    getline(cin, judulFilm);
+    cout << "Masukkan waktu tayang: ";
+    getline(cin, waktuTayang);
+    cout << "Masukkan harga tiket: ";
+    cin >> harga;
+
+    jadwalFilm[bioskop].push_back({judulFilm, waktuTayang, harga});
+    sortFilms(bioskop); 
+    cout << "Film berhasil ditambahkan!" << endl;
+    system("pause");
+}
