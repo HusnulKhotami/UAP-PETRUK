@@ -85,3 +85,52 @@ void mergeSort(vector<int>& arr, int l, int r) {
     mergeSort(arr, m + 1, r);
     merge(arr, l, m, r);
 }
+
+void cetakCString(const char* cstr) {
+    cout << cstr << endl;
+}
+
+
+map<string, string> pengguna;
+map<string, vector<Film>> jadwalFilm;
+list<Kursi> kursiList;
+vector<Tiket> tiketList;
+
+void setCursorPosition(int x, int y) {
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+void setColor(int color) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+void clearScreen() {
+    system("cls");
+}
+
+void printHeader() {
+    cout << "+----------------------------------------------+" << endl;
+    cout << "|        Sistem Pemesanan Tiket Bioskop        |" << endl;
+    cout << "+----------------------------------------------+" << endl;
+}
+
+void printHeaderTambah() {
+    cout << " ==============================================" << endl;
+    cout << "||                TAMBAH FILM                 ||" << endl;
+    cout << " ==============================================" << endl;
+}
+
+void printHeaderJadwal() {
+    cout << " ====================================================================================" << endl;
+    cout << "||                                    Jadwal Film                                   ||" << endl;
+    cout << " ====================================================================================" << endl;
+}
+
+void printHeaderCek() {
+    cout << " ========================================================================================================" << endl;
+    cout << "||                                             Cek Tiket                                                ||" << endl;
+    cout << " ========================================================================================================" << endl;
+}
