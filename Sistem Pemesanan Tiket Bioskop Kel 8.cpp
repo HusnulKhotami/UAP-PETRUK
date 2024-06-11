@@ -431,4 +431,20 @@ for (size_t i = 0; i < tiketList.size(); ++i) {
         to_string(tiketList[i].nomorKursi)
     });
 }
+printTable(headers, rows);
+
+if (!tiketList.empty()) {
+    cout << "Pilih tiket yang ingin dicetak (nomor): ";
+    int pilihan;
+    cin >> pilihan;
+
+    if (pilihan < 1 || pilihan > tiketList.size()) {
+        cout << "Pilihan tidak valid!" << endl;
+    } else {
+        cetakTiket(tiketList[pilihan - 1]);
+    }
+}
+
+system("pause");
+}
 
