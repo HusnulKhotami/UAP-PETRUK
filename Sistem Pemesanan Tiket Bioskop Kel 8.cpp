@@ -287,3 +287,32 @@ void tampilkanJadwal(const string& bioskop) {
     printTable(headers, rows);
     system("pause");
 }
+
+void displaySeatChart() {
+    clearScreen();
+    printHeaderCek();
+    cout << "Kursi Tersedia" << endl;
+
+    cout << "+------------------------+" << endl;
+    cout << "|         Screen         |" << endl;
+    cout << "+------------------------+" << endl;
+    for (int i = 1; i <= 4; ++i) {
+        for (int j = 1; j <= 5; ++j) {
+            int seatNumber = (i-1)*5+ j;
+            string seatNumberString = (seatNumber < 10) ? "0" + to_string(seatNumber) : to_string(seatNumber); 
+            auto it = find_if(kursiList.begin(), kursiList.end(), [seatNumber](const Kursi& k) { return k.nomor == seatNumber; });
+            if (it != kursiList.end() && !it->tersedia) {
+                setColor(4); // Merah untuk kursi yang sudah dipesan
+            } else {
+                setColor(2); // Hijau untuk kursi yang tersedia
+            }
+            cout << "| " << setw(2) << seatNumber << " ";
+            setColor(15); // Mengembalikan warna ke default
+        }
+        cout << "|" << endl;
+    }
+    cout << "+------------------+" << endl;
+    cout << "Tekan Enter Untuk Melanjutkan...";
+    cin.ignore();
+    cin.get(); // Menunggu tombol Enter ditekan sebelum melanjutkan
+}
