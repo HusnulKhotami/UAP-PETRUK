@@ -134,3 +134,58 @@ void printHeaderCek() {
     cout << "||                                             Cek Tiket                                                ||" << endl;
     cout << " ========================================================================================================" << endl;
 }
+
+void printMenu() {
+    cout << "+----------------------------------------------+" << endl;
+    cout << "| 1. Register                                  |" << endl;
+    cout << "| 2. Login                                     |" << endl;
+    cout << "| 3. Exit                                      |" << endl;
+    cout << "+----------------------------------------------+" << endl;
+    cout << "Pilih Opsi: ";
+}
+
+void printTable(const vector<string>& headers, const vector<vector<string>>& rows) {
+    int colWidth = 20;
+    int tableWidth = headers.size() * colWidth + headers.size() + 1;
+
+    cout << "+";
+    for (int i = 0; i < tableWidth - 2; i++) cout << "-";
+    cout << "+" << endl;
+
+    cout << "|";
+    for (const auto& header : headers) {
+        cout << " " << header << string(colWidth - header.size() - 1, ' ') << "|";
+    }
+    cout << endl;
+
+    cout << "+";
+    for (int i = 0; i < tableWidth - 2; i++) cout << "-";
+    cout << "+" << endl;
+
+    for (const auto& row : rows) {
+        cout << "|";
+        for (const auto& cell : row) {
+            cout << " " << cell << string(colWidth - cell.size() - 1, ' ') << "|";
+        }
+        cout << endl;
+    }
+
+    cout << "+";
+    for (int i = 0; i < tableWidth - 2; i++) cout << "-";
+    cout << "+" << endl;
+}
+
+void registrasi() {
+    string username, password;
+    clearScreen();
+    printHeader();
+    cout << "Registrasi Pengguna" << endl;
+    cout << "Masukkan username: ";
+    cin >> username;
+    cout << "Masukkan password: ";
+    cin >> password;
+    pengguna[username] = password;
+    cout << "Registrasi berhasil!" << endl;
+    system("pause");
+}
+
