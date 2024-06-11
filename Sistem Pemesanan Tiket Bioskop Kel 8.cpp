@@ -314,9 +314,31 @@ void displaySeatChart() {
     cout << "+------------------+" << endl;
     cout << "Tekan Enter Untuk Melanjutkan...";
     cin.ignore();
-    cin.get(); // Menunggu tombol Enter ditekan sebelum melanjutkan
+    cin.get();
 }
 
+string pilihBioskop() {
+    clearScreen();
+    printHeader();
+    cout << "Pilih Bioskop" << endl;
+    cout << "+----------------------------------------------+" << endl;
+    cout << "| 1. XXI BOEMI KEDATON                         |" << endl;
+    cout << "| 2. CGV CIPLAZ                                |" << endl;
+    cout << "+----------------------------------------------+" << endl;
+    cout << "Pilih Opsi: ";
+    int pilihan;
+    cin >> pilihan;
+
+    if (pilihan == 1) {
+        return "A";
+    } else if (pilihan == 2) {
+        return "B";
+    } else {
+        cout << "Pilihan tidak valid!" << endl;
+        system("pause");
+        return pilihBioskop();
+    }
+}
 
 void pesanTiket() {
     int pilihanFilm, pilihanKursi;
