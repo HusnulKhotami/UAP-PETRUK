@@ -473,3 +473,17 @@ cout << "| 4. Logout                                    |" << endl;
 cout << "+----------------------------------------------+" << endl;
 cout << "Pilih Opsi: ";
 }
+
+int main() {
+inisialisasiKursi();
+
+jadwalFilm["A"].push_back({"hakiyu", "08:00", 25000});
+jadwalFilm["A"].push_back({"vina lampung", "10:30", 30000});
+jadwalFilm["A"].push_back({"tok dalang ringgit", "13:00", 28000});
+jadwalFilm["A"].push_back({"kuliah asoy", "15:30", 27000});
+jadwalFilm["A"].push_back({"agak santuy", "18:00", 32000});
+jadwalFilm["A"].push_back({"messi vs ronaldo", "20:30", 29000});
+jadwalFilm["B"].push_back({"gebetanku flexing", "09:00", 26000});
+jadwalFilm["B"].push_back({"Siapa dia? 1998", "11:30", 31000});
+jadwalFilm["B"].push_back({"Statprob horor", "14:00", 28000});
+jadwalFilm["B"].push_back({"Pulpen ctak ctek", "16:30", 27000});
