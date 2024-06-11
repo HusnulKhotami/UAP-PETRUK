@@ -225,3 +225,31 @@ void sortFilms(const string& bioskop) {
     }
 }
 
+void tambahFilm() {
+    string bioskop, judulFilm, waktuTayang;
+    int harga;
+
+    clearScreen();
+    printHeaderTambah();
+
+    // Pilih Bioskop
+    cout << endl;
+    cout << "+----------------------------------------------+" << endl;
+    cout << "|                Pilih Bioskop                 |" << endl;
+    cout << "+----------------------------------------------+" << endl;
+    cout << "| 1. XXI BOEMI KEDATON                         |" << endl;
+    cout << "| 2. CGV CIPLAZ                                |" << endl;
+    cout << "+----------------------------------------------+" << endl;
+    cout << "Pilih Opsi: ";
+    int pilihan;
+    cin >> pilihan;
+
+    if (pilihan == 1) {
+        bioskop = "A";
+    } else if (pilihan == 2) {
+        bioskop = "B";
+    } else {
+        cout << "Pilihan tidak valid!" << endl;
+        system("pause");
+        return tambahFilm(); // Restart the function if the choice is invalid
+    }
