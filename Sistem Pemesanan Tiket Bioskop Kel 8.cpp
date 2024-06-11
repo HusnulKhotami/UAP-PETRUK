@@ -487,3 +487,45 @@ jadwalFilm["B"].push_back({"gebetanku flexing", "09:00", 26000});
 jadwalFilm["B"].push_back({"Siapa dia? 1998", "11:30", 31000});
 jadwalFilm["B"].push_back({"Statprob horor", "14:00", 28000});
 jadwalFilm["B"].push_back({"Pulpen ctak ctek", "16:30", 27000});
+
+while (true) {
+    tampilkanMenuUtama();
+    int pilihan;
+    cin >> pilihan;
+
+    if (pilihan == 1) {
+        registrasi();
+    } else if (pilihan == 2) {
+        if (login()) {
+            while (true) {
+                tampilkanMenuSetelahLogin();
+                int pilihanMenu;
+                cin >> pilihanMenu;
+
+                if (pilihanMenu == 1) {
+                    tambahFilm();
+                } else if (pilihanMenu == 2) {
+                    pesanTiket();
+                } else if (pilihanMenu == 3) {
+                    cekTiket();
+                } else if (pilihanMenu == 4) {
+                    break;
+                } else {
+                    cout << "Pilihan tidak valid!" << endl;
+                    system("pause");
+                }
+            }
+        }
+    } else if (pilihan == 3) {
+        clearScreen();
+        cout << "Exiting the program." << endl;
+        system("pause");
+        break;
+    } else {
+        cout << "Pilihan tidak valid!" << endl;
+        system("pause");
+    }
+}
+
+return 0;
+}
