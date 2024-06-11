@@ -316,3 +316,56 @@ void displaySeatChart() {
     cin.ignore();
     cin.get(); // Menunggu tombol Enter ditekan sebelum melanjutkan
 }
+
+
+void pesanTiket() {
+    int pilihanFilm, pilihanKursi;
+    string bioskop = pilihBioskop();
+    tampilkanJadwal(bioskop);
+    cout << "Pilih film (nomor): ";
+    cin >> pilihanFilm;
+
+    if (pilihanFilm < 1 || pilihanFilm > jadwalFilm[bioskop].size()) {
+cout << "Pilihan film tidak valid!" << endl;
+system("pause");
+return;
+}
+Film filmDipilih = jadwalFilm[bioskop][pilihanFilm - 1];
+cout << "Film: " << filmDipilih.judul << endl;
+cout << "Waktu: " << filmDipilih.waktu << endl;
+cout << "Harga: Rp" << filmDipilih.harga << endl;
+
+displaySeatChart();
+cout << "Pilih kursi (nomor): ";
+cin >> pilihanKursi;
+
+auto it = find_if(kursiList.begin(), kursiList.end(), [pilihanKursi](const Kursi& k) { return k.nomor == pilihanKursi; });
+
+if (it == kursiList.end() || !it->tersedia) {
+    cout << "Pilihan kursi tidak valid!" << endl;
+    system("pause");
+    return;
+}
+
+it->tersedia = false;
+
+cout << "Konfirmasi pembelian tiket sebesar Rp. " << filmDipilih.harga<<"(y/n):";
+char konfirmasi;
+cin >> konfirmasi;
+
+if (konfirmasi == 'y' || konfirmasi == 'Y') {
+    Tiket tiket(filmDipilih.judul, filmDipilih.waktu, filmDipilih.harga, pilihanKursi);
+    tiketList.push_back(tiket);
+    cout << "Tiket berhasil dipesan!" << endl;
+    cout << "Tiket Anda:" << endl;
+    cout << "Film: " << tiket.judul << endl;
+    cout << "Waktu: " << tiket.waktu << endl;
+    cout << "Harga: Rp" << tiket.harga << endl;
+    cout << "Nomor Kursi: " << tiket.nomorKursi << endl;
+    system("pause");
+} else {
+    it->tersedia = true;
+    cout << "Pemesanan dibatalkan." << endl;
+    system("pause");
+}
+}
