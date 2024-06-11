@@ -267,3 +267,23 @@ cout << "Masukkan judul film: ";
     cout << "Film berhasil ditambahkan!" << endl;
     system("pause");
 }
+void tampilkanJadwal(const string& bioskop) {
+    clearScreen();
+    printHeaderJadwal();
+
+    vector<string> headers = {"No", "Judul", "Waktu", "Harga"};
+    vector<vector<string>> rows;
+    if (jadwalFilm.find(bioskop) != jadwalFilm.end()) {
+        for (size_t i = 0; i < jadwalFilm[bioskop].size(); ++i) {
+            rows.push_back({
+                to_string(i + 1),
+                jadwalFilm[bioskop][i].judul,
+                jadwalFilm[bioskop][i].waktu,
+                "Rp" + to_string(jadwalFilm[bioskop][i].harga)
+            });
+        }
+    }
+
+    printTable(headers, rows);
+    system("pause");
+}
